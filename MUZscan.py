@@ -55,9 +55,9 @@ def run(url):
     except:
         pass
 
-masscan = maSscan(sys.argv[1],sys.argv[2],'1000').run()
+masscan = maSscan(sys.argv[1],sys.argv[2]).run()
 titlePattern = re.compile('<title>(.*)</title>')
-Pool = ThreadPool(int(1));results = Pool.map(run, masscan);Pool.close();Pool.join()
+Pool = ThreadPool(int(200));results = Pool.map(run, masscan);Pool.close();Pool.join()
 print("------------------------------")
 print("----------title scan----------\n")
 for line in results:
